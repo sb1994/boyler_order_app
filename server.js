@@ -11,8 +11,8 @@ dotenv.config();
 
 const app = express();
 
-// const dbConnect = require("./utils/dbConnect");
-// dbConnect();
+const dbConnect = require("./utils/dbConnect");
+dbConnect();
 
 // #TODO: ADD PASSPORT CONFIG
 
