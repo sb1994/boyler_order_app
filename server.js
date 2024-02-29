@@ -24,6 +24,7 @@ app.use(bodyParser.json());
 
 app.use(express.static(__dirname + '/public'));
 
+app.use(cors());
 app.get('/', (req, res) => {
     res.json({ message: 'Welcome to the API' });
 }); 
