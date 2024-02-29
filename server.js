@@ -16,7 +16,8 @@ dbConnect();
 
 // #TODO: ADD PASSPORT CONFIG
 
-
+app.use(passport.initialize());
+require("./utils/passport")(passport);
 //middleware
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(bodyParser.json());
