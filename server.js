@@ -18,6 +18,7 @@ dbConnect();
 
 app.use(passport.initialize());
 require("./utils/passport")(passport);
+
 //middleware
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(bodyParser.json());
@@ -25,10 +26,18 @@ app.use(bodyParser.json());
 
 app.use(express.static(__dirname + '/public'));
 
+app.use((req, res, next) => {
+    res.header("Access-Control-Allow-Origin", "*");
+    next();
+});
+
 app.use(cors());
-app.get('/', (req, res) => {
-    res.json({ message: 'Welcome to the API' });
-}); 
+//API routers
+const users = require("./routes/userRoutes");
+
+
+//adding routes to the app object
+app.use("/api/users", users);
 
 const http = require("http");
 const server = http.createServer(app);

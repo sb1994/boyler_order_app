@@ -19,6 +19,8 @@
   },
   "homepage": "https://github.com/sb1994/boyler_order_app#readme",
   "dependencies": {
+    "bcrypt": "^5.1.1",
+    "bcryptjs": "^2.4.3",
     "concurrently": "^8.2.2",
     "cors": "^2.8.5",
     "dotenv": "^16.3.1",
