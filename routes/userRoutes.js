@@ -5,12 +5,12 @@ const jwt = require("jsonwebtoken");
 const passport = require("passport");
 
 const User = require("../models/User");
-const { registerUser, loginUser } = require("../controllers/userController");
+const { registerUser, loginUser, getCurrentUser } = require("../controllers/userController");
 
-router.get("/test", (req, res) => res.json({ msg: "Users Works" }));
 
 
 router.post("/register", registerUser);
 router.post("/login", loginUser);
+router.get("/current",passport.authenticate('jwt', { session: false }), getCurrentUser);
 
 module.exports = router;

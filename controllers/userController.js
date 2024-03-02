@@ -124,7 +124,15 @@ const loginUser = async(req, res) =>{
     }
 }
 
+const getCurrentUser = async (req, res) => {
+  try {
+    const user = await User.findById(req.user._id);
+    res.json(user);
+  } catch (error) {
+    console.error(error);
+  }
+};
 
-module.exports = {registerUser, loginUser};
+module.exports = {registerUser, loginUser,getCurrentUser};
 
 
