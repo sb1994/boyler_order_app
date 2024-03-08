@@ -33,6 +33,10 @@ const userSchema = new mongoose.Schema({
     enum: ["delivery_driver", "client","restauranteur",],
     default: "client",
   },
+  profile:{
+    type: mongoose.Schema.Types.ObjectId,
+    ref: "Profile",
+  },
   joined: {
     type: Date,
     default: Date.now,

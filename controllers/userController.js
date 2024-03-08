@@ -126,8 +126,19 @@ const loginUser = async(req, res) =>{
 
 const getCurrentUser = async (req, res) => {
   try {
-    const user = await User.findById(req.user._id);
-    res.json(user);
+    const user = await User.findById(req.user._id).select("-password");
+    // res.json(user);
+
+    if (req.user._id != user._id.toHexString()) {
+      res.status(500).json({ message: "You are not authorized to view this resource" });
+    }else {
+
+      //tidy up the user object
+      user._id = req.user._id
+
+      console.log(user);
+      res.status(200).json({user,success:true});
+    }
   } catch (error) {
     console.error(error);
   }
