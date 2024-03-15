@@ -48,10 +48,6 @@ const registerUser = async (req, res) => {
     if (errors.length > 0) {
       return res.status(400).json({ errors });
     }
-    //   const errors = {}
-    //error - cannot deconstruct req.body so put whole value
-    console.log(req.body);
-  
     const currentUser = await User.findOne({ email });
   
     if (currentUser) {
