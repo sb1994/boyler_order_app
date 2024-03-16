@@ -1,5 +1,4 @@
-
-let express = require('express');
+let express = require("express");
 const bodyParser = require("body-parser");
 const mongoose = require("mongoose");
 const dotenv = require("dotenv");
@@ -23,18 +22,16 @@ require("./utils/passport")(passport);
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(bodyParser.json());
 
-
-app.use(express.static(__dirname + '/public'));
+app.use(express.static(__dirname + "/public"));
 
 app.use((req, res, next) => {
-    res.header("Access-Control-Allow-Origin", "*");
-    next();
+  res.header("Access-Control-Allow-Origin", "*");
+  next();
 });
 
 app.use(cors());
 //API routers
 const users = require("./routes/userRoutes");
-
 
 //adding routes to the app object
 app.use("/api/users", users);

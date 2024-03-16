@@ -1,15 +1,14 @@
-
-const mongoose  = require("mongoose");
+const mongoose = require("mongoose");
 
 const userSchema = new mongoose.Schema({
   email: {
     type: String,
     required: true,
   },
-  firstname: {
+  firstName: {
     type: String,
   },
-  lastname: {
+  lastName: {
     type: String,
   },
   password: {
@@ -25,17 +24,17 @@ const userSchema = new mongoose.Schema({
   country: {
     type: String,
   },
-  postalCode: { 
+  postalCode: {
     type: String,
   },
   role: {
     type: String,
-    enum: ["delivery_driver", "client","restauranteur",],
-    default: "client",
+    enum: ["delivery_driver", "client", "restauranteur", "admin"],
   },
-  profile:{
+  profile: {
     type: mongoose.Schema.Types.ObjectId,
     ref: "Profile",
+    default: null,
   },
   joined: {
     type: Date,
@@ -43,4 +42,4 @@ const userSchema = new mongoose.Schema({
   },
 });
 
-module.exports = User = mongoose.model("users", userSchema)
+module.exports = User = mongoose.model("users", userSchema);
