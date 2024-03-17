@@ -29,7 +29,7 @@ const userSchema = new mongoose.Schema({
   },
   role: {
     type: String,
-    enum: ["delivery_driver", "client", "restauranteur", "admin"],
+    enum: ["delivery_driver", "client", "restauanteur", "admin"],
   },
   profile: {
     type: mongoose.Schema.Types.ObjectId,

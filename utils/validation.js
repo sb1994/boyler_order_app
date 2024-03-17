@@ -1,5 +1,7 @@
 const checkRoleType = (role) => {
-  const roleTypes = ["client", "restaurateur", "delivery_driver", "admin"];
+  const roleTypes = ["client", "restauanteur", "delivery_driver", "admin"];
+
+  console.log(roleTypes.some(roleType =>roleTypes === roleType));
 
   return roleTypes.some((roleType) => roleType === role);
 };

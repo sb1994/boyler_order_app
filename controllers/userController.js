@@ -15,6 +15,7 @@ const registerUser = async (req, res) => {
     postalCode,
     city,
     country,
+    addressLine1
   } = req.body;
   const errors = [];
 
@@ -22,6 +23,8 @@ const registerUser = async (req, res) => {
     errors.push("Cannot have an empty type");
   } else {
     let validRoleType = checkRoleType(role);
+
+    console.log(validRoleType);
 
     !validRoleType ? errors.push("Need to enter a valid type") : null;
   }
@@ -53,7 +56,7 @@ const registerUser = async (req, res) => {
   if (!country) {
     errors.push("country is required");
   }
-  if (!country) {
+  if (!addressLine1) {
     errors.push("country is required");
   }
 
@@ -61,7 +64,10 @@ const registerUser = async (req, res) => {
   if (errors.length > 0) {
     return res.status(400).json({ errors });
   }
+
   const currentUser = await User.findOne({ email });
+
+
 
   if (currentUser) {
     errors.push("User already exists please enter a new email");
