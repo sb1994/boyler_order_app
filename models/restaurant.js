@@ -8,9 +8,10 @@ const restaurantProfileSchema = new mongoose.Schema({
   address: String,
   description: String,
   logo: String,
-  menu: { type: mongoose.Schema.Types.ObjectId, ref: "Menu" }, // Ensure menu is required
+  menu: { type: mongoose.Schema.Types.ObjectId, ref: "Menu", default: null }, // Ensure menu is required
   // other restaurant-specific fields
   bankStatement: Buffer,
+  bankStatementVerified: { type: Boolean, default: false },
   contractSigned: { type: Boolean, default: false },
   verified: { type: Boolean, default: false },
   contractId: String, // Added contract_id field
@@ -19,7 +20,7 @@ const restaurantProfileSchema = new mongoose.Schema({
     type: Date,
     default: Date.now,
   },
-  updateProfile: {
+  updateProfilDate: {
     type: Date,
     default: Date.now,
   },

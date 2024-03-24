@@ -32,9 +32,7 @@ const userSchema = new mongoose.Schema({
     enum: ["delivery_driver", "client", "restauranteur", "admin"],
   },
   profile: {
-    type: mongoose.Schema.Types.ObjectId,
-    ref: "Profile",
-    default: null,
+    type: String,
   },
   joined: {
     type: Date,

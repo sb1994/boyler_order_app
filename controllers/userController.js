@@ -22,6 +22,7 @@ const registerUser = async (req, res) => {
     errors.push("Cannot have an empty type");
   } else {
     let validRoleType = checkRoleType(role);
+    console.log(validRoleType);
 
     !validRoleType ? errors.push("Need to enter a valid type") : null;
   }
@@ -49,9 +50,6 @@ const registerUser = async (req, res) => {
   }
   if (!city) {
     errors.push("city is required");
-  }
-  if (!country) {
-    errors.push("country is required");
   }
   if (!country) {
     errors.push("country is required");
@@ -92,6 +90,7 @@ const registerUser = async (req, res) => {
 
       res.status(200).json({ registerSuccess: true, user: savedUser });
       // console.log('Product saved:', savedProduct);
+      // res.json({ msg: "my message" });
     } catch (error) {
       console.error("Error saving user:", error);
     }
