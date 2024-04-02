@@ -15,11 +15,7 @@ router.post(
   passport.authenticate("jwt", { session: false }),
   createRestaurant
 );
-router.get(
-  "/all",
-
-  getAllRestaurants
-);
+router.get("/all", getAllRestaurants);
 router.get(
   "/myrestaurants",
   passport.authenticate("jwt", { session: false }),

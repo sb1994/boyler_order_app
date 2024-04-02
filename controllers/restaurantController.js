@@ -13,7 +13,6 @@ const createRestaurant = async (req, res) => {
     logo,
     foodSafetyUrl,
   } = req.body;
-  // console.log(req.user._id.toHexString());
 
   //check that the user exists
 

@@ -33,10 +33,12 @@ app.use(cors());
 //API routers
 const users = require("./routes/userRoutes");
 const restaurants = require("./routes/restaurantRoutes");
+const menus = require("./routes/menuRoutes");
 
 //adding routes to the app object
 app.use("/api/users", users);
 app.use("/api/restaurants", restaurants);
+app.use("/api/menus", menus);
 
 const http = require("http");
 const server = http.createServer(app);
