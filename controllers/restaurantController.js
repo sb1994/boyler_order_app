@@ -1,5 +1,5 @@
 const User = require("../models/User");
-const RestaurantProfile = require("../models/restaurant");
+const Restaurant = require("../models/restaurant");
 const { checkRoleType } = require("../utils/validation");
 
 const createRestaurant = async (req, res) => {
@@ -64,7 +64,7 @@ const createRestaurant = async (req, res) => {
     return res.status(400).json(errors);
   }
 
-  const newRestaurant = await new RestaurantProfile({
+  const newRestaurant = await new Restaurant({
     restaurant_name,
     description,
     address,
@@ -85,19 +85,26 @@ const createRestaurant = async (req, res) => {
   }
 };
 const getAllRestaurants = async (req, res) => {
-  const allRestaurants = await RestaurantProfile.find({});
+  try {
+    const allRestaurants = await Restaurant.find({});
 
-  console.log(allRestaurants);
-  return res
-    .status(200)
-    .json({ msg: "this is the get all restaurants method" });
+    if (allRestaurants.length == 0) {
+      return res.status(404).json({
+        message: "No restaurants found",
+      });
+    } else {
+      return res.status(200).json({ allRestaurants });
+    }
+  } catch (error) {
+    res.json(error);
+  }
 };
 //gets all the restaurants owned by the current user being the restaruanteur
 const getRestaurantByCurrentUserId = async (req, res) => {
   let { user } = req; //user on the token
 
   try {
-    let listRestaurants = await RestaurantProfile.find({
+    let listRestaurants = await Restaurant.find({
       user: user._id,
     }).populate("user");
     return res.json(listRestaurants);

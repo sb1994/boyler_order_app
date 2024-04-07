@@ -1,7 +1,7 @@
 // models/RestaurantProfile.js
 const mongoose = require("mongoose");
 
-const restaurantProfileSchema = new mongoose.Schema({
+const restaurantSchema = new mongoose.Schema({
   user: { type: mongoose.Schema.Types.ObjectId, ref: "users", unique: true }, //over of the
   restaurant_name: String,
   cuisine_type: String,
@@ -28,7 +28,4 @@ const restaurantProfileSchema = new mongoose.Schema({
   updateByUserId: { type: mongoose.Schema.Types.ObjectId, ref: "users" },
 });
 
-module.exports = RestuarantProfile = mongoose.model(
-  "restaurantprofiles",
-  restaurantProfileSchema
-);
+module.exports = Restaurant = mongoose.model("restaurants", restaurantSchema);
