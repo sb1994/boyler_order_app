@@ -15,7 +15,7 @@ const restaurantSchema = new mongoose.Schema({
   bankStatementVerified: { type: Boolean, default: false },
   contractStatus: { type: String },
   verified: { type: Boolean, default: false },
-  contractId: String, // Added contract_id field
+  contractId: {default:null,type:String}, // Added contract_id field
   foodSafetyUrl: String, // Added food_safety_url field
   created: {
     type: Date,

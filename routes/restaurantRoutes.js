@@ -8,6 +8,7 @@ const {
   createRestaurant,
   getAllRestaurants,
   getRestaurantByCurrentUserId,
+  
 } = require("../controllers/restaurantController");
 
 router.post(
